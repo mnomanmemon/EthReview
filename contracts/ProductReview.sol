@@ -1,4 +1,5 @@
-pragma solidity >=0.4.0 <=0.6.0;
+// SPDX-License-Identifier: MIT 
+pragma solidity >=0.4.0 <0.9.0;
 import "./PRToken.sol";
 
 
@@ -59,6 +60,7 @@ contract ProductReview {
         products[skuId].price = price;
         products[skuId].quantity = quantity;
         products[skuId].productOwner = msg.sender;
+        products[skuId].rater = msg.sender;
         products[skuId].isExist = true;
         productIds.push(skuId);
         
@@ -75,7 +77,7 @@ contract ProductReview {
           
             if(msg.value > products[skuId].price)
             {
-                msg.sender.transfer(msg.value - products[skuId].price); //extra ammount transferred
+                // msg.sender.transfer(msg.value - products[skuId].price); //extra ammount transferred
             }
             products[skuId].productOwner.transfer(products[skuId].price-reviewReturn); //Product price transferred to seller"
               msg.sender.transfer(reviewReturn); //1000 weis returned to buyer"   
@@ -95,7 +97,7 @@ contract ProductReview {
              
            products[skuId].productUserReview[msg.sender].isReview = true;
            products[skuId].productUserReview[msg.sender].reviewDescription = review;
-           products[skuId].productUserReview[msg.sender].timeStamp = now;
+           products[skuId].productUserReview[msg.sender].timeStamp = block.timestamp;
            //tokencontract.reviewed();
            products[skuId].reviewsCount ++;
            products[skuId].rater = msg.sender;

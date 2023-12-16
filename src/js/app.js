@@ -19,10 +19,10 @@ App = {
       App.web3Provider = window.web3.currentProvider;
     }
     // If no injected web3 instance is detected, fall back to Ganache
-    else {
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-    }
-    // App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+    // else {
+    //   App.web3Provider = new Web3.providers.HttpProvider('http://localhost:24012');
+    // }
+    App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
     web3 = new Web3(App.web3Provider);
 
     return App.initContract();
@@ -140,7 +140,7 @@ App = {
   },
 
   AddReview: function() {
-    var review = document.getElementById(this.id).value
+    var review = document.getElementById('review').value
     var id = this.id;
     var prodInstance;
       App.contracts.ProductReview.deployed().then(function(instance) {

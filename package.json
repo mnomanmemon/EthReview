@@ -1,5 +1,5 @@
 {
-  "name": "pet-shop",
+  "name": "eth-review",
   "version": "1.0.0",
   "description": "",
   "main": "truffle.js",
@@ -14,5 +14,10 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "ganache": "^7.9.1",
+    "ganache-cli": "^6.12.2",
+    "truffle": "^5.11.5"
   }
 }
